@@ -79,7 +79,7 @@ iex -S mix
 iex> Kafka.produce("test", "my key", "something")
 ```
 
-20 Consume messages
+2) Consume messages
 
 ```
 iex> Kafka.consume("test")
