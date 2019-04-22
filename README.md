@@ -11,7 +11,13 @@ I tried to paid attention to [ordering guarantee](https://medium.com/@felipedutr
 
 # Get Started
 
-Start the Kafka cluster (only for development purpose)
+Add the kafka nodes to `/hosts` file
+
+```
+sudo echo "127.0.0.1	kafka1 kafka2 kafka3" >> /etc/hosts
+```
+
+Start the Kafka cluster (only for development purpose, it will start a cluster with 3 nodes)
 
 ```
 docker-compose up
@@ -32,7 +38,7 @@ docker exec -it kafka_playground_kafka1_1 /bin/bash
 2) Create a topic
 
 ```
-/opt/kafka/bin/kafka-topics.sh --create --topic test --zookeeper zookeeper:2181 --replication-factor 1 --partitions 1
+/opt/kafka/bin/kafka-topics.sh --create --topic test --zookeeper zookeeper:2181 --replication-factor 2 --partitions 3
 ```
 
 3) Get the detail about the topic
@@ -85,9 +91,20 @@ iex> Kafka.produce("test", "my key", "something")
 iex> Kafka.consume("test")
 ```
 
-# Questions
+# Stop one of the node of Kafka to see what happen :smiling_imp:
+
+```
+docker-compose stop kafka2
+```
+
+And continue to produce and consume messages, and then
+
+```
+docker-compose start kafka2
+```
+
+# Open Questions :question:
 
 - How the partition is choosen based on the `key` of the message?
 - Why I need to speficy the `partition` when consuming message for a specific topic?
-- Add some examples with `consumers_group` and `workers`
-- Setup a Kafka cluster with three nodes
+- How `consumers_group` works?

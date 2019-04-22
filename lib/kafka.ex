@@ -2,17 +2,17 @@ defmodule Kafka do
   def produce(topic, key, message) do
     request =
       %KafkaEx.Protocol.Produce.Request{
-        compression: :none,
+        topic: topic,
         messages: [
           %KafkaEx.Protocol.Produce.Message{
             key: key,
             value: message
           }
         ],
+        compression: :none,
         partition: 0,
         required_acks: 1,
-        timeout: 0,
-        topic: topic
+        timeout: 0
       }
 
     KafkaEx.produce(request)
