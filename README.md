@@ -90,3 +90,4 @@ iex> Kafka.consume("test")
 - How the partition is choosen based on the `key` of the message?
 - Why I need to speficy the `partition` when consuming message for a specific topic?
 - Add some examples with `consumers_group` and `workers`
+- Setup a Kafka cluster with three nodes
