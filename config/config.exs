@@ -31,6 +31,6 @@ use Mix.Config
 
 config :kafka_ex,
   brokers: [
-    {"192.168.1.167", 9092}
+    {"localhost", 9092}
   ],
   kafka_version: "2.2.0"
