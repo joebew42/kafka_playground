@@ -28,3 +28,9 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env()}.exs"
+
+config :kafka_ex,
+  brokers: [
+    {"192.168.1.167", 9092}
+  ],
+  kafka_version: "2.2.0"
